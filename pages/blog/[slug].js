@@ -6,7 +6,8 @@ export default function Blog({ mdxSource, frontMatter }) {
   const content = hydrate(mdxSource, {})
   console.log('frontMatter', frontMatter)
 
-  return <div>{content}</div>
+  // wrap with blog layout
+  return <article class="prose lg:prose-lg">{content}</article>
 }
 
 export async function getStaticPaths() {
