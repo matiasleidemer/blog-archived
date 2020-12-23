@@ -11,7 +11,7 @@ const Home = ({ mdxSource }) => {
   return (
     <HomeLayout>
       <Headline />
-      <article class="prose lg:prose-lg">{content}</article>
+      <article className="prose lg:prose-lg">{content}</article>
     </HomeLayout>
   )
 }

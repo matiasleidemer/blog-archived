@@ -4,7 +4,9 @@ const Link = ({ href, text }) => {
   return (
     <div className="ml-2 md:ml-4 text-gray-900 dark:text-gray-100">
       <NextLink href={href}>
-        <a className="hover:text-gray-600 dark:hover:text-gray-400">{text}</a>
+        <a className="hover:text-gray-600 dark:hover:text-gray-400 transition">
+          {text}
+        </a>
       </NextLink>
     </div>
   )
