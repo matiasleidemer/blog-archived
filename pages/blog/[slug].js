@@ -4,7 +4,6 @@ import { getFiles, getFileBySlug } from '@/lib/mdx'
 
 export default function Blog({ mdxSource, frontMatter }) {
   const content = hydrate(mdxSource, {})
-  console.log('frontMatter', frontMatter)
 
   // wrap with blog layout
   return <article class="prose lg:prose-lg">{content}</article>

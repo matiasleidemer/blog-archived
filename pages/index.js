@@ -1,18 +1,25 @@
-import Head from 'next/head'
+import hydrate from 'next-mdx-remote/hydrate'
 
-export default function Home() {
+import Headline from '@/components/Headline'
+import HomeLayout from '@/components/HomeLayout'
+
+import { getFileBySlug } from '@/lib/mdx'
+
+const Home = ({ mdxSource }) => {
+  const content = hydrate(mdxSource, {})
+
   return (
-    <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1 className="text-center text-sm font-bold">
-          https://matiasleidemer.dev
-        </h1>
-      </main>
-    </div>
+    <HomeLayout>
+      <Headline />
+      <article class="prose lg:prose-lg">{content}</article>
+    </HomeLayout>
   )
 }
+
+export async function getStaticProps() {
+  const post = await getFileBySlug('index')
+
+  return { props: post }
+}
+
+export default Home
