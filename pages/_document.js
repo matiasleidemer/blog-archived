@@ -5,7 +5,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <title>Matias Leidemer | Software Developer</title>
           <link rel="icon" href="/favicons/favicon.ico" />
           <link
             rel="apple-touch-icon"
