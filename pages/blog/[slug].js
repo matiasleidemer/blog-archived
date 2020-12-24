@@ -1,12 +1,23 @@
 import hydrate from 'next-mdx-remote/hydrate'
 
 import { getFiles, getFileBySlug } from '@/lib/mdx'
+import BlogLayout from '@/components/BlogLayout'
+import Head from '@/components/Head'
 
 export default function Blog({ mdxSource, frontMatter }) {
   const content = hydrate(mdxSource, {})
+  const { title, readingTime } = frontMatter
 
-  // wrap with blog layout
-  return <article class="prose lg:prose-lg">{content}</article>
+  return (
+    <>
+      <Head title={title}></Head>
+      <BlogLayout>
+        <h1>{title}</h1>
+        <p>{readingTime.text}</p>
+        <article className="prose">{content}</article>
+      </BlogLayout>
+    </>
+  )
 }
 
 export async function getStaticPaths() {
