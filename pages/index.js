@@ -1,8 +1,6 @@
 import hydrate from 'next-mdx-remote/hydrate'
 
-import Headline from '@/components/Headline'
 import HomeLayout from '@/components/HomeLayout'
-
 import { getFileBySlug } from '@/lib/mdx'
 
 const Home = ({ mdxSource }) => {
@@ -10,7 +8,6 @@ const Home = ({ mdxSource }) => {
 
   return (
     <HomeLayout>
-      <Headline />
       <article className="prose lg:prose-lg">{content}</article>
     </HomeLayout>
   )

@@ -1,3 +1,4 @@
+import Headline from './Headline'
 import Menu from './Menu'
 
 const Layout = ({ children }) => {
@@ -5,6 +6,7 @@ const Layout = ({ children }) => {
     <>
       <div className="container mx-auto max-w-2xl p-4 md:p-8">
         <Menu />
+        <Headline />
         {children}
       </div>
     </>
