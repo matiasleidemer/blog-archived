@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 const Headline = () => (
-  <div className="text-center my-12">
+  <div className="text-center mb-12">
     <Image
       src="/profile.jpg"
       width={128}

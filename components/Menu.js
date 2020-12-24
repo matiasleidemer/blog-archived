@@ -13,16 +13,18 @@ const Link = ({ href, text }) => {
 }
 
 const Menu = () => (
-  <nav className="flex justify-between items-baseline my-2">
-    <div>
-      <button className="bg-gray-700 w-8 h-8 rounded-full">🌙</button>
-    </div>
-    <div className="flex justify-end">
-      <Link href="/blog" text="Blog" />
-      <Link href="/projects" text="Projects" />
-      <Link href="/" text="Home" />
-    </div>
-  </nav>
+  <div className="mt-2 mb-16">
+    <nav className="flex justify-between items-baseline">
+      <div>
+        <button className="bg-gray-700 w-8 h-8 rounded-full">🌙</button>
+      </div>
+      <div className="flex justify-end">
+        <Link href="/blog" text="Blog" />
+        <Link href="/projects" text="Projects" />
+        <Link href="/" text="Home" />
+      </div>
+    </nav>
+  </div>
 )
 
 export default Menu
