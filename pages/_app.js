@@ -1,14 +1,12 @@
+import Head from '@/components/Head'
 import React from 'react'
-import Head from 'next/head'
 
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Head>
-        <title>Matias Leidemer | Software Developer</title>
-      </Head>
+      <Head title="Matias Leidemer | Software Developer"></Head>
       <Component {...pageProps} />
     </>
   )
