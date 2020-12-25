@@ -7,9 +7,9 @@ pre[class*='language-'] {
   word-wrap: normal;
   color: #eee;
   background: #2f2f2f;
-  font-family: Inconsolata, Roboto Mono, monospace;
-  font-size: 1em;
-  line-height: 1.5em;
+  font-family: Menlo, monospace;
+  font-size: 14px;
+  line-height: 20px;
 
   -moz-tab-size: 4;
   -o-tab-size: 4;

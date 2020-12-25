@@ -2,7 +2,7 @@ import Head from '@/components/Head'
 import React from 'react'
 
 import '../styles/globals.css'
-import '../styles/prism-material-light.css'
+import '../styles/prism-material-dark.css'
 
 function MyApp({ Component, pageProps }) {
   return (
