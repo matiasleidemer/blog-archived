@@ -1,6 +1,7 @@
 import { format } from 'date-fns'
 
 import Container from './Container'
+import FooterCard from './FooterCard'
 import Head from './Head'
 
 const BlogLayout = ({ frontMatter, children }) => {
@@ -21,6 +22,8 @@ const BlogLayout = ({ frontMatter, children }) => {
         </div>
       </div>
       <article className="prose mb-8">{children}</article>
+      <hr className="mb-8" />
+      <FooterCard />
     </Container>
   )
 }
