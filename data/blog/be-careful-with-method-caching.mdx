@@ -31,10 +31,12 @@ Turns out I was getting a rspec expectation failure, saying that it expected to 
 
 The implementation for that method was quite simple too:
 
-```js
-import { Flex } from '@chakra-ui/react'
-
-return <Flex px={4} py={2} />
+```ruby
+class Blog < ActiveRecord::Base
+  def delete_oldest_post
+    oldest_post.delete if oldest_post.present?
+  end
+end
 ```
 
 Easy enough: if the post has an oldest post delete it, if not, whatever (which in ruby translates to `nil`). While I was debugging it I even tried to call `#reload` on the blog object in the spec (to fetch it from the database again), in hopes it was some weird rails sql cache or something, but no luck.
