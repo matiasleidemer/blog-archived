@@ -11,22 +11,24 @@ const Blog = ({ posts }) => {
 
   return (
     <Container>
-      <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-12">
+      <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-12 text-gray-900 dark:text-gray-100">
         Blog
       </h1>
       <ul>
         {sortedPosts.map((post) => {
           return (
             <li className="mb-8" key={post.slug}>
-              <span className="text-gray-600 text-sm tracking-tight font-thin">
+              <span className="text-gray-600 dark:text-gray-400 text-sm tracking-tight font-thin">
                 {format(new Date(post.date), 'd MMM, yyyy')}
               </span>
               <Link href={`/blog/${post.slug}`}>
                 <a>
-                  <h2 className="text-xl font-bold text-gray-800 leading-tight">
+                  <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 leading-tight">
                     {post.title}
                   </h2>
-                  <p className="text-sm text-gray-600">{post.description}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {post.description}
+                  </p>
                 </a>
               </Link>
             </li>

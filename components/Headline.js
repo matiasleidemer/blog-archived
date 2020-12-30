@@ -6,15 +6,15 @@ const Headline = () => (
       src="/profile.jpg"
       width={128}
       height={128}
-      className="p-2 rounded-full md:w-32 md:h-32"
+      className="p-2 rounded-full"
       priority
     ></Image>
 
-    <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+    <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
       MATIAS LEIDEMER
     </h1>
 
-    <p className="md:text-lg font-extralight text-gray-600">
+    <p className="md:text-lg font-extralight text-gray-600 dark:text-gray-400">
       I write code that writes code
     </p>
   </div>

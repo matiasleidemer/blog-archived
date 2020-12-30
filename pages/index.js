@@ -8,7 +8,7 @@ const Home = ({ mdxSource }) => {
 
   return (
     <HomeLayout>
-      <article className="prose lg:prose-lg">{content}</article>
+      <div className="prose md:prose-lg dark:prose-dark">{content}</div>
     </HomeLayout>
   )
 }
