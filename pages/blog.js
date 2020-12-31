@@ -18,7 +18,7 @@ const Blog = ({ posts }) => {
         {sortedPosts.map((post) => {
           return (
             <li className="mb-8" key={post.slug}>
-              <span className="text-gray-600 dark:text-gray-400 text-sm tracking-tight font-thin">
+              <span className="text-gray-600 dark:text-gray-400 text-sm tracking-tight font-extralight">
                 {format(new Date(post.date), 'd MMM, yyyy')}
               </span>
               <Link href={`/blog/${post.slug}`}>
