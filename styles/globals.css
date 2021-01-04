@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .social-links a {
+    @apply mr-8;
+  }
+
+  .social-links a:last-child {
+    margin-right: 0px;
+  }
+}
