@@ -1,23 +1,12 @@
 import NextLink from 'next/link'
-import { useTheme } from 'next-themes'
+import ThemeSwitcher from './ThemeSwitcher'
 
 const Container = ({ children }) => {
-  const { theme, setTheme } = useTheme()
-
   return (
     <div className="container mx-auto max-w-2xl p-8">
       <div className="mt-2 mb-16">
-        <nav className="flex justify-between items-baseline">
-          <div>
-            <button
-              aria-label="Toggle Dark Mode"
-              type="button"
-              className="bg-gray-800 w-8 h-8 rounded-full"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              {theme === 'dark' ? '☀️' : '🌙'}
-            </button>
-          </div>
+        <nav className="flex justify-between items-start">
+          <ThemeSwitcher />
           <div className="flex justify-end">
             <Link href="/blog" text="Blog" />
             <Link href="/projects" text="Projects" />
