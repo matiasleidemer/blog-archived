@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "yarn eslint 'components/**/*.js' 'lib/**/*.js' 'pages/**/*.js'"
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.5.0",
@@ -25,5 +26,9 @@
     "reading-time": "^1.2.1",
     "rehype": "^11.0.0",
     "tailwindcss": "^2.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-plugin-react": "^7.22.0"
   }
 }

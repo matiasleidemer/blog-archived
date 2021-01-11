@@ -41,9 +41,9 @@ const Home = ({ mdxSource }) => {
   )
 }
 
-const SocialLink = ({ Icon, href, ...props }) => {
+const SocialLink = ({ Icon, href }) => {
   return (
-    <a href={href} target="_blank">
+    <a href={href} target="_blank" rel="noreferrer">
       <Icon className="w-4 h-4 md:w-5 md:h-5" />
     </a>
   )

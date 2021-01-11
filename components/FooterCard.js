@@ -12,8 +12,12 @@ const FooterCard = () => (
       />
     </div>
     <div className="ml-4 prose dark:prose-dark text-xs md:text-base">
-      My name is Matias. I'm a software developer from Brazil. You can{' '}
-      <a href="https://twitter.com/matiasleidemer" target="_blank">
+      My name is Matias. I&apos;m a software developer from Brazil. You can{' '}
+      <a
+        href="https://twitter.com/matiasleidemer"
+        target="_blank"
+        rel="noreferrer"
+      >
         follow me on Twitter
       </a>
       .
