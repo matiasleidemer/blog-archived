@@ -1,0 +1,126 @@
+---
+title: "Ruby's Set and unique objects"
+date: '2021-03-21'
+description: "Ruby's Set is a neat data structure that doesn't have all the attention it deserves"
+---
+
+Ruby's [Set](https://ruby-doc.org/stdlib-2.7.1/libdoc/set/rdoc/Set.html) is a neat data structure that doesn't have all the attention it deserves. The ability to create collections with unique values can come in handy in a variety of situations, here's an example:
+
+```ruby
+unique_animals = Set.new(["cat"])
+=> #<Set: {"cat"}>
+unique_animals << "dog"
+=> #<Set: {"cat", "dog"}>
+unique_animals.merge(["cat", "dog", "fish"])
+=> #<Set: {"cat", "dog", "fish"}>
+```
+
+While working on [Released today](https://github.com/matiasleidemer/released-today), I came across one interesting use case. At some point, the app fetches the user's top artists and, under some conditions, it was getting the same artist more than once. My idea was to use a `Set` to get rid of that issue, but it didn't work very well (I changed the code for abbreviation):
+
+```ruby
+top_artists = Set.new
+top_artists.merge(spotify.top_artists.limit(50))
+top_artists.size # => 50
+top_artists.map(&:name).unique.size # => 39
+```
+
+The collection returned by the Spotify client contained duplicated artists, and `Set` couldn't figure that out. That could happen with any custom objects. See the following example:
+
+```ruby
+class Person
+  def initialize(id, name)
+    @id = id
+    @name = name
+  end
+end
+
+john = Person.new(1, 'John')
+alex = Person.new(2, 'Alex')
+john_again = Person.new(1, 'John')
+
+set = Set.new([john, alex])
+=> #<Set: {#<Person:0x0000557f174ef9a8 @id=1, @name="John">,
+           #<Person:0x0000557f1705b428 @id=2, @name="Alex">}>
+
+set.add(john_again)
+=> #<Set: {#<Person:0x0000557f17453b98 @id=1, @name="John">,
+           #<Person:0x0000557f17487a10 @id=2, @name="Alex">,
+           #<Person:0x0000557f1749b178 @id=1, @name="John">}>
+```
+
+`john` and `john_again` represent the same person (at least from a business perspective), but they aren't the same object. `Set` can't figure that out by itself, so it considers them to be different from each other.
+
+## Sets and Hashes
+
+According to the documentation:
+
+> Set uses Hash as storage (...). Equality of elements is determined according to `Object#eql?` and `Object#hash`.
+
+Under the hood, `Set` uses [Hash](https://ruby-doc.org/core-2.7.0/Hash.html) to store its values. To calculate the `key` attribute of the hash, Set calls the `#hash` method on the object, and whatever value it returns becomes the key. Using the same example up above, this how it looks:
+
+```ruby
+john.hash
+=> -1284188373202491939
+john_again.hash
+=> 4062518138273258934
+
+custom_set = Hash.new
+custom_set[john.hash] = john
+custom_set[john_again.hash] = john_again
+```
+
+But that's only half of the solution. `Set` also needs the `#eql?` method to compare objects:
+
+```ruby
+john.eql?(john_again)
+=> false
+```
+
+## Making it work
+
+In most situations, defining the `#eql?` method in your class should do the trick. But, under some specific conditions, it won't. You can find a better explanation about it by reading [this answer](https://stackoverflow.com/a/54961965) on Stackoverflow, but here's the gist of it:
+
+> (...) Thus, when two objects have different hash values, I know for a fact that they are different, but if they have the same hash value, then they could still be different, and I need to compare them for equality to be sure.
+
+Because we don't want that happening in our code, let's redefine both `#hash` and `#eql?` to use the person ID as the reference:
+
+```ruby
+class Person
+  attr_reader :id, :name
+
+  def initialize(id, name)
+    @id = id
+    @name = name
+  end
+
+  def hash
+    id.hash
+  end
+
+  def eql?(other_person)
+    id == other_person.id
+  end
+end
+```
+
+Alright, now that everything is in place, let's try it out:
+
+```ruby
+john = Person.new(1, 'John')
+=> #<Person:0x00007f48485f5630 @id=1, @name="John">
+alex = Person.new(2, 'Alex')
+=> #<Person:0x00007f48485fcea8 @id=2, @name="Alex">
+john_again = Person.new(1, 'John')
+=> #<Person:0x00007f4848604518 @id=1, @name="John">
+
+set = Set.new([john, alex])
+=> #<Set: {#<Person:0x00007f48485f5630 @id=1, @name="John">,
+           #<Person:0x00007f48485fcea8 @id=2, @name="Alex">}>
+set.add(john_again)
+=> #<Set: {#<Person:0x00007f48485f5630 @id=1, @name="John">,
+           #<Person:0x00007f48485fcea8 @id=2, @name="Alex">}>
+```
+
+So, even though `john` and `john_again` aren't the same objects (notice their memory address), they _represent_ the same entity. And, in our case specifically, that's what we need to ensure equality and uniqueness in our `Set`. Here's the [commit](https://github.com/matiasleidemer/released-today/commit/70b68d6b4bc2a1c235b584d3052a6beafbccb4fd) on Released Today.
+
+_In case you didn't know, that's precisely what [ActiveRecord does](https://github.com/rails/rails/blob/5aaaa1630ae9a71b3c3ecc4dc46074d678c08d67/activerecord/lib/active_record/core.rb#L599-L624)._
