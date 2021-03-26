@@ -18,7 +18,7 @@ const Home = ({ mdxSource }) => {
       <div className="prose md:prose-lg dark:prose-dark mb-12 md:mb-20">
         {content}
       </div>
-      <div className="flex justify-center text-gray-700 dark:text-gray-300 social-links">
+      <div className="flex justify-center text-gray-700 dark:text-gray-300 space-x-8">
         <SocialLink Icon={FaGithub} href="https://github.com/matiasleidemer" />
         <SocialLink
           Icon={FaTwitter}
