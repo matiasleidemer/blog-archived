@@ -6,7 +6,6 @@ import Head from './Head'
 import MetaTags from './MetaTags'
 
 const BlogLayout = ({ frontMatter, children }) => {
-  console.log(frontMatter)
   const { title, description, readingTime, slug } = frontMatter
 
   return (
@@ -29,8 +28,9 @@ const BlogLayout = ({ frontMatter, children }) => {
             •<p className="ml-2">{readingTime.text}</p>
           </div>
         </div>
-        <article className="prose mb-8 dark:prose-dark">{children}</article>
-        <hr className="mb-8" />
+        <hr className="my-12 border-t-2 w-20 mx-auto" />
+        <article className="prose my-8 dark:prose-dark">{children}</article>
+        <hr className="my-12 border-t-2 w-20 mx-auto" />
         <FooterCard />
       </Container>
     </>
