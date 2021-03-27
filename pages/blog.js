@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { format } from 'date-fns'
 
-import Container from '@/components/Container'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 
 const Blog = ({ posts }) => {
@@ -10,7 +9,7 @@ const Blog = ({ posts }) => {
   )
 
   return (
-    <Container>
+    <>
       <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-12 text-gray-900 dark:text-gray-100">
         Blog
       </h1>
@@ -35,7 +34,7 @@ const Blog = ({ posts }) => {
           )
         })}
       </ul>
-    </Container>
+    </>
   )
 }
 

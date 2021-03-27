@@ -5,12 +5,15 @@ import React from 'react'
 import { ThemeProvider } from 'next-themes'
 
 import Head from '@/components/Head'
+import Container from '@/components/Container'
 
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider attribute="class">
       <Head title="Matias Leidemer | Software Developer"></Head>
-      <Component {...pageProps} />
+      <Container>
+        <Component {...pageProps} />
+      </Container>
     </ThemeProvider>
   )
 }

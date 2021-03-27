@@ -11,7 +11,10 @@ const MetaTags = ({ url, title, description, image }) => (
     <meta property="og:description" content={description} />
     <meta
       property="og:image"
-      content={image || 'https://matiasleidemer.dev/profile.jpg'}
+      content={
+        image ||
+        'https://matiasleidemer.dev/favicons/android-chrome-512x512.png'
+      }
     />
   </NextHead>
 )
