@@ -16,7 +16,7 @@ const BlogLayout = ({ frontMatter, children }) => {
       />
       <Head title={title}></Head>
       <div className="mb-8">
-        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-gray-900 dark:text-gray-100">
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 text-gray-900 dark:text-gray-100">
           {title}
         </h1>
         <div className="flex items-center font-light text-gray-600 dark:text-gray-400 text-sm">
@@ -27,7 +27,7 @@ const BlogLayout = ({ frontMatter, children }) => {
         </div>
       </div>
       <hr className="my-12 border-t-2 w-20 mx-auto" />
-      <article className="prose lg:prose-lg my-8 dark:prose-dark">
+      <article className="prose sm:prose-lg my-8 dark:prose-dark">
         {children}
       </article>
       <hr className="my-12 border-t-2 w-20 mx-auto" />
