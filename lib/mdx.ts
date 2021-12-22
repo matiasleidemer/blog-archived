@@ -36,10 +36,15 @@ export async function getFileBySlug(type: string, slug?: string) {
   }
 }
 
+type Post = {
+  [key: string]: string
+  slug: string
+}
+
 export async function getAllFilesFrontMatter(type: string) {
   const files = fs.readdirSync(path.join(root, 'data', type))
 
-  return files.reduce((allPosts, postSlug) => {
+  return files.reduce((allPosts: Post[], postSlug: string) => {
     const source = fs.readFileSync(
       path.join(root, 'data', type, postSlug),
       'utf8'
