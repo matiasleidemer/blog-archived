@@ -2,10 +2,9 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
 import readingTime from 'reading-time'
-import rehypePrism from '@mapbox/rehype-prism'
+import rehypePrism from 'rehype-prism-plus'
 
 import { serialize } from 'next-mdx-remote/serialize'
-// import mdxPrism from 'mdx-prism'
 
 const root = process.cwd()
 
