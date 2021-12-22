@@ -1,6 +1,6 @@
 import Headline from './Headline'
 
-const Layout = ({ children }) => (
+const Layout: React.FC = ({ children }) => (
   <>
     <Headline />
     {children}

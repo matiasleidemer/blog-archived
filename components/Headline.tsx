@@ -8,6 +8,7 @@ const Headline = () => (
       height={128}
       className="p-2 rounded-full"
       priority
+      alt="Headshot of me"
     ></Image>
 
     <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">

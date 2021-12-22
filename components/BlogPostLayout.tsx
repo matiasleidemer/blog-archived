@@ -1,10 +1,15 @@
 import { format } from 'date-fns'
+import { FrontMatter } from '../lib/types'
 
 import FooterCard from './FooterCard'
 import Head from './Head'
 import MetaTags from './MetaTags'
 
-const BlogLayout = ({ frontMatter, children }) => {
+interface Props {
+  frontMatter: FrontMatter
+}
+
+const BlogPostLayout: React.FC<Props> = ({ frontMatter, children }) => {
   const { title, description, readingTime, slug } = frontMatter
 
   return (
@@ -16,24 +21,22 @@ const BlogLayout = ({ frontMatter, children }) => {
       />
       <Head title={title}></Head>
       <div className="mb-8">
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 text-gray-900 dark:text-gray-100">
+        <h1 className="mb-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
           {title}
         </h1>
-        <div className="flex items-center font-light text-gray-600 dark:text-gray-400 text-sm">
+        <div className="flex items-center text-sm font-light text-gray-600 dark:text-gray-400">
           <span className="mr-2">
             {format(new Date(frontMatter.date), 'd MMM, yyyy')}
           </span>
           •<p className="ml-2">{readingTime.text}</p>
         </div>
       </div>
-      <hr className="my-12 border-t-2 w-20 mx-auto" />
-      <article className="prose sm:prose-lg my-8 dark:prose-dark">
-        {children}
-      </article>
-      <hr className="my-12 border-t-2 w-20 mx-auto" />
+      <hr className="my-12 mx-auto w-20 border-t-2" />
+      <article className="my-8">{children}</article>
+      <hr className="my-12 mx-auto w-20 border-t-2" />
       <FooterCard />
     </>
   )
 }
 
-export default BlogLayout
+export default BlogPostLayout

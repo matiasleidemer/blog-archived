@@ -1,6 +1,13 @@
 import NextHead from 'next/head'
 
-const MetaTags = ({ url, title, description, image }) => (
+interface Props {
+  url: string
+  title: string
+  description: string
+  image?: string
+}
+
+const MetaTags: React.FC<Props> = ({ url, title, description, image }) => (
   <NextHead>
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@matiasleidemer" />
