@@ -50,13 +50,8 @@ const Home: React.FC<Props> = ({ mdxSource }) => {
 
 const SocialLink = ({ Icon, href }: { Icon: IconType; href: string }) => {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      className="text-gray-700 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-400 transition-colors"
-    >
-      <Icon className="w-4 md:w-5 h-4 md:h-5" />
+    <a href={href} target="_blank" rel="noreferrer">
+      <Icon className="w-5 md:w-6 h-5 md:h-6" />
     </a>
   )
 }

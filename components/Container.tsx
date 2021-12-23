@@ -28,9 +28,7 @@ const Link: React.FC<LinkProps> = ({ href, caption }) => {
   return (
     <div className="text-gray-900 dark:text-gray-100">
       <NextLink href={href}>
-        <a className="hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
-          {caption}
-        </a>
+        <a className="font-medium tracking-wide uppercase">{caption}</a>
       </NextLink>
     </div>
   )
