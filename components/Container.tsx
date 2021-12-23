@@ -3,8 +3,8 @@ import ThemeToggle from './ThemeToggle'
 
 const Container: React.FC = ({ children }) => {
   return (
-    <div className="container p-8 mx-auto max-w-3xl">
-      <div className="mt-2 mb-16">
+    <div className="container flex flex-col p-8 mx-auto max-w-3xl h-screen">
+      <header className="mt-2 mb-16">
         <nav className="flex justify-between items-start">
           <div className="flex justify-end space-x-4 md:space-x-8">
             <Link href="/" caption="Home" />
@@ -13,8 +13,8 @@ const Container: React.FC = ({ children }) => {
           </div>
           <ThemeToggle />
         </nav>
-      </div>
-      {children}
+      </header>
+      <main>{children}</main>
     </div>
   )
 }

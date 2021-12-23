@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Prose from './Prose'
 
 const FooterCard = () => (
-  <div className="flex items-center">
+  <div className="flex items-center mb-12">
     <div className="flex items-center">
       <Image
         alt="Matias Leidemer"
